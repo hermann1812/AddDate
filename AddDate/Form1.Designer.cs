@@ -56,6 +56,7 @@
             // listBox_Dateiliste
             // 
             this.listBox_Dateiliste.FormattingEnabled = true;
+            this.listBox_Dateiliste.HorizontalScrollbar = true;
             this.listBox_Dateiliste.Location = new System.Drawing.Point(13, 72);
             this.listBox_Dateiliste.Name = "listBox_Dateiliste";
             this.listBox_Dateiliste.Size = new System.Drawing.Size(434, 264);
@@ -69,7 +70,10 @@
             this.Controls.Add(this.listBox_Dateiliste);
             this.Controls.Add(this.button_Datum_hinzufügen);
             this.Controls.Add(this.button_Dateien_auswählen);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MinimizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.ResumeLayout(false);
 

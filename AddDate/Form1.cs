@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,9 +14,15 @@ namespace AddDate
 {
     public partial class Form1 : Form
     {
+        // Caption for MessageBox
+        public static readonly string caption = "AddDate - " + Assembly.GetEntryAssembly().GetName().Version;
+
         public Form1()
         {
             InitializeComponent();
+
+            // Caption for form
+            Text = caption;
         }
 
         private void button_Dateien_auswählen_Click(object sender, EventArgs e)
@@ -38,7 +45,7 @@ namespace AddDate
         private void button_Datum_hinzufügen_Click(object sender, EventArgs e)
         {
             // Aktuelles Datum abrufen
-            string datum = DateTime.Now.ToString("yyyy_MM_dd");
+            string datum = DateTime.Now.ToString("yyyy-MM-dd");
 
             // Für jede Datei in der ListBox...
             foreach (string file in listBox_Dateiliste.Items)
