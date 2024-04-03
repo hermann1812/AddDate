@@ -69,10 +69,20 @@ namespace AddDate
 
         private void button_Leerzeichen_tauschen_Click(object sender, EventArgs e)
         {
-            foreach (var file in listBox_Dateiliste.Items)
+            foreach (string file in listBox_Dateiliste.Items)
             {
-                var newFileName = file.ToString().Replace(" ", "_");
-                File.Move(file.ToString(), newFileName);
+                string folder = Directory.GetParent(file).ToString();
+                string oldFileName = Path.GetFileName(file);
+                string newFileName = Path.Combine(folder, oldFileName.Replace(" ", "_"));
+
+                try
+                {
+                    File.Move(file.ToString(), newFileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + "\r\n" + file + "\r\n" + newFileName,caption,MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
             }
 
             if (listBox_Dateiliste.Items.Count > 0)
