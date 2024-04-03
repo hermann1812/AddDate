@@ -31,6 +31,7 @@
             this.button_Dateien_auswählen = new System.Windows.Forms.Button();
             this.button_Datum_hinzufügen = new System.Windows.Forms.Button();
             this.listBox_Dateiliste = new System.Windows.Forms.ListBox();
+            this.button_Leerzeichen_tauschen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Dateien_auswählen
@@ -62,11 +63,22 @@
             this.listBox_Dateiliste.Size = new System.Drawing.Size(434, 264);
             this.listBox_Dateiliste.TabIndex = 2;
             // 
+            // button_Leerzeichen_tauschen
+            // 
+            this.button_Leerzeichen_tauschen.Location = new System.Drawing.Point(131, 42);
+            this.button_Leerzeichen_tauschen.Name = "button_Leerzeichen_tauschen";
+            this.button_Leerzeichen_tauschen.Size = new System.Drawing.Size(142, 23);
+            this.button_Leerzeichen_tauschen.TabIndex = 3;
+            this.button_Leerzeichen_tauschen.Text = "Leerzeichen -> Unterstrich";
+            this.button_Leerzeichen_tauschen.UseVisualStyleBackColor = true;
+            this.button_Leerzeichen_tauschen.Click += new System.EventHandler(this.button_Leerzeichen_tauschen_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(458, 347);
+            this.Controls.Add(this.button_Leerzeichen_tauschen);
             this.Controls.Add(this.listBox_Dateiliste);
             this.Controls.Add(this.button_Datum_hinzufügen);
             this.Controls.Add(this.button_Dateien_auswählen);
@@ -84,6 +96,7 @@
         private System.Windows.Forms.Button button_Dateien_auswählen;
         private System.Windows.Forms.Button button_Datum_hinzufügen;
         private System.Windows.Forms.ListBox listBox_Dateiliste;
+        private System.Windows.Forms.Button button_Leerzeichen_tauschen;
     }
 }
 

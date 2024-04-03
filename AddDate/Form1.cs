@@ -58,8 +58,23 @@ namespace AddDate
                 }
             }
 
+            listBox_Dateiliste.Items.Clear();
+
             // Meldung über Erfolg anzeigen
-            MessageBox.Show("Files have been successfully renamed!");
+            MessageBox.Show("Files have been successfully renamed!", caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void button_Leerzeichen_tauschen_Click(object sender, EventArgs e)
+        {
+            foreach (var file in listBox_Dateiliste.Items)
+            {
+                var newFileName = file.ToString().Replace(" ", "_");
+                File.Move(file.ToString(), newFileName);
+            }
+
+            MessageBox.Show("Dateien wurden umbenannt.", caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            listBox_Dateiliste.Items.Clear();
         }
     }
 }
