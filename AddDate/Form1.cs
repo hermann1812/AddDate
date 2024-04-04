@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
@@ -54,7 +55,7 @@ namespace AddDate
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Error renaming");
+                    MessageBox.Show(ex.Message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -81,7 +82,7 @@ namespace AddDate
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message + "\r\n" + file + "\r\n" + newFileName,caption,MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -95,6 +96,31 @@ namespace AddDate
         private void Erfolgsmeldung()
         {
             MessageBox.Show("Files have been successfully renamed!", caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void button_Aus_ListBox_entfernen_Click(object sender, EventArgs e)
+        {
+            // Überprüfen, ob die ListBox Elemente enthält
+            if (listBox_Dateiliste.Items.Count == 0)
+            {
+                return;
+            }
+
+            // Liste der zu entfernenden Elemente erstellen
+            List<object> itemsToRemove = new List<object>();
+
+            // Alle ausgewählten Elemente durchlaufen
+            foreach (object item in listBox_Dateiliste.SelectedItems)
+            {
+                // Element zur Entfernungsliste hinzufügen
+                itemsToRemove.Add(item);
+            }
+
+            // Alle Elemente aus der ListBox entfernen
+            foreach (object item in itemsToRemove)
+            {
+                listBox_Dateiliste.Items.Remove(item);
+            }
         }
     }
 }

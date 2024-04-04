@@ -32,6 +32,7 @@
             this.button_Datum_hinzufügen = new System.Windows.Forms.Button();
             this.listBox_Dateiliste = new System.Windows.Forms.ListBox();
             this.button_Leerzeichen_tauschen = new System.Windows.Forms.Button();
+            this.button_Aus_ListBox_entfernen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Dateien_auswählen
@@ -60,6 +61,7 @@
             this.listBox_Dateiliste.HorizontalScrollbar = true;
             this.listBox_Dateiliste.Location = new System.Drawing.Point(13, 72);
             this.listBox_Dateiliste.Name = "listBox_Dateiliste";
+            this.listBox_Dateiliste.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox_Dateiliste.Size = new System.Drawing.Size(434, 264);
             this.listBox_Dateiliste.TabIndex = 2;
             // 
@@ -73,11 +75,22 @@
             this.button_Leerzeichen_tauschen.UseVisualStyleBackColor = true;
             this.button_Leerzeichen_tauschen.Click += new System.EventHandler(this.button_Leerzeichen_tauschen_Click);
             // 
+            // button_Aus_ListBox_entfernen
+            // 
+            this.button_Aus_ListBox_entfernen.Location = new System.Drawing.Point(131, 12);
+            this.button_Aus_ListBox_entfernen.Name = "button_Aus_ListBox_entfernen";
+            this.button_Aus_ListBox_entfernen.Size = new System.Drawing.Size(142, 23);
+            this.button_Aus_ListBox_entfernen.TabIndex = 4;
+            this.button_Aus_ListBox_entfernen.Text = "Aus ListBox entfernen";
+            this.button_Aus_ListBox_entfernen.UseVisualStyleBackColor = true;
+            this.button_Aus_ListBox_entfernen.Click += new System.EventHandler(this.button_Aus_ListBox_entfernen_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(458, 347);
+            this.Controls.Add(this.button_Aus_ListBox_entfernen);
             this.Controls.Add(this.button_Leerzeichen_tauschen);
             this.Controls.Add(this.listBox_Dateiliste);
             this.Controls.Add(this.button_Datum_hinzufügen);
@@ -97,6 +110,7 @@
         private System.Windows.Forms.Button button_Datum_hinzufügen;
         private System.Windows.Forms.ListBox listBox_Dateiliste;
         private System.Windows.Forms.Button button_Leerzeichen_tauschen;
+        private System.Windows.Forms.Button button_Aus_ListBox_entfernen;
     }
 }
 
