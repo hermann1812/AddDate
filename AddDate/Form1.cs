@@ -44,9 +44,9 @@ namespace AddDate
             // Für jede Datei in der ListBox...
             foreach (string file in listBox_Dateiliste.Items)
             {
-                // ... neuen Dateinamen mit Datum erstellen
+                // ... neuen Dateinamen mit Datum erstellen und Leerzeichen mit Unterstrich ersetzen
                 string neuerName = Path.Combine(Path.GetDirectoryName(file),
-                    datum + "_" + Path.GetFileName(file));
+                    datum + "_" + Path.GetFileName(file).Replace(" ","_"));
 
                 // Datei umbenennen
                 try
@@ -60,42 +60,12 @@ namespace AddDate
             }
 
             // Meldung über Erfolg anzeigen
-            if (listBox_Dateiliste.Items.Count > 0)
-            {
-                Erfolgsmeldung();
-            }
+            //if (listBox_Dateiliste.Items.Count > 0)
+            //{
+            //    Erfolgsmeldung();
+            //}
 
             listBox_Dateiliste.Items.Clear();
-        }
-
-        private void button_Leerzeichen_tauschen_Click(object sender, EventArgs e)
-        {
-            foreach (string file in listBox_Dateiliste.Items)
-            {
-                string folder = Directory.GetParent(file).ToString();
-                string oldFileName = Path.GetFileName(file);
-                string newFileName = Path.Combine(folder, oldFileName.Replace(" ", "_"));
-
-                try
-                {
-                    File.Move(file.ToString(), newFileName);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-
-            if (listBox_Dateiliste.Items.Count > 0)
-            {
-                Erfolgsmeldung();
-            }
-
-            listBox_Dateiliste.Items.Clear();
-        }
-        private void Erfolgsmeldung()
-        {
-            MessageBox.Show("Files have been successfully renamed!", caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void button_Aus_ListBox_entfernen_Click(object sender, EventArgs e)
@@ -121,6 +91,27 @@ namespace AddDate
             {
                 listBox_Dateiliste.Items.Remove(item);
             }
+        }
+
+        private void listBox_Dateiliste_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (string file in files)
+            {
+                listBox_Dateiliste.Items.Add(file);
+            }
+        }
+
+        private void listBox_Dateiliste_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            listBox_Dateiliste.AllowDrop = true;
+            listBox_Dateiliste.DragDrop += listBox_Dateiliste_DragDrop;
+            listBox_Dateiliste.DragEnter += listBox_Dateiliste_DragEnter;
         }
     }
 }

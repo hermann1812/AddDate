@@ -31,7 +31,6 @@
             this.button_Dateien_auswählen = new System.Windows.Forms.Button();
             this.button_Datum_hinzufügen = new System.Windows.Forms.Button();
             this.listBox_Dateiliste = new System.Windows.Forms.ListBox();
-            this.button_Leerzeichen_tauschen = new System.Windows.Forms.Button();
             this.button_Aus_ListBox_entfernen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -49,9 +48,9 @@
             // 
             this.button_Datum_hinzufügen.Location = new System.Drawing.Point(13, 42);
             this.button_Datum_hinzufügen.Name = "button_Datum_hinzufügen";
-            this.button_Datum_hinzufügen.Size = new System.Drawing.Size(112, 23);
+            this.button_Datum_hinzufügen.Size = new System.Drawing.Size(112, 48);
             this.button_Datum_hinzufügen.TabIndex = 1;
-            this.button_Datum_hinzufügen.Text = "Datum hinzufügen";
+            this.button_Datum_hinzufügen.Text = "Datum hinzufügen\r\nund Leerzeichen mit\r\nUnterstrich ersetzen\r\n";
             this.button_Datum_hinzufügen.UseVisualStyleBackColor = true;
             this.button_Datum_hinzufügen.Click += new System.EventHandler(this.button_Datum_hinzufügen_Click);
             // 
@@ -59,21 +58,11 @@
             // 
             this.listBox_Dateiliste.FormattingEnabled = true;
             this.listBox_Dateiliste.HorizontalScrollbar = true;
-            this.listBox_Dateiliste.Location = new System.Drawing.Point(13, 72);
+            this.listBox_Dateiliste.Location = new System.Drawing.Point(13, 98);
             this.listBox_Dateiliste.Name = "listBox_Dateiliste";
             this.listBox_Dateiliste.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBox_Dateiliste.Size = new System.Drawing.Size(434, 264);
+            this.listBox_Dateiliste.Size = new System.Drawing.Size(434, 238);
             this.listBox_Dateiliste.TabIndex = 2;
-            // 
-            // button_Leerzeichen_tauschen
-            // 
-            this.button_Leerzeichen_tauschen.Location = new System.Drawing.Point(131, 42);
-            this.button_Leerzeichen_tauschen.Name = "button_Leerzeichen_tauschen";
-            this.button_Leerzeichen_tauschen.Size = new System.Drawing.Size(142, 23);
-            this.button_Leerzeichen_tauschen.TabIndex = 3;
-            this.button_Leerzeichen_tauschen.Text = "Leerzeichen -> Unterstrich";
-            this.button_Leerzeichen_tauschen.UseVisualStyleBackColor = true;
-            this.button_Leerzeichen_tauschen.Click += new System.EventHandler(this.button_Leerzeichen_tauschen_Click);
             // 
             // button_Aus_ListBox_entfernen
             // 
@@ -91,7 +80,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(458, 347);
             this.Controls.Add(this.button_Aus_ListBox_entfernen);
-            this.Controls.Add(this.button_Leerzeichen_tauschen);
             this.Controls.Add(this.listBox_Dateiliste);
             this.Controls.Add(this.button_Datum_hinzufügen);
             this.Controls.Add(this.button_Dateien_auswählen);
@@ -100,6 +88,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
@@ -109,7 +98,6 @@
         private System.Windows.Forms.Button button_Dateien_auswählen;
         private System.Windows.Forms.Button button_Datum_hinzufügen;
         private System.Windows.Forms.ListBox listBox_Dateiliste;
-        private System.Windows.Forms.Button button_Leerzeichen_tauschen;
         private System.Windows.Forms.Button button_Aus_ListBox_entfernen;
     }
 }
