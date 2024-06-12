@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button_Dateien_auswählen = new System.Windows.Forms.Button();
             this.button_Datum_hinzufügen = new System.Windows.Forms.Button();
             this.listBox_Dateiliste = new System.Windows.Forms.ListBox();
@@ -84,6 +85,7 @@
             this.Controls.Add(this.button_Datum_hinzufügen);
             this.Controls.Add(this.button_Dateien_auswählen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
