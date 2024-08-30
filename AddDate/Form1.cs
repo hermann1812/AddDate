@@ -11,12 +11,22 @@ namespace AddDate
         // Caption for MessageBox
         public static readonly string caption = "AddDate - " + Assembly.GetEntryAssembly().GetName().Version;
 
+        // Aktuelles Datum
+        public string datum = DateTime.Now.ToString("yyyy-MM-dd");
+
         public Form1()
         {
             InitializeComponent();
 
+            // Initialisiere den MonthCalendar
+            monthCalendar1.DateSelected += MonthCalendar1_DateSelected;
+
             // Caption for form
             Text = caption;
+
+            // Aktuelles Datum abrufen
+            datum = DateTime.Now.ToString("yyyy-MM-dd");
+            label_Datum.Text = "Datum = " + datum;
         }
 
         private void button_Dateien_auswählen_Click(object sender, EventArgs e)
@@ -38,9 +48,6 @@ namespace AddDate
 
         private void button_Datum_hinzufügen_Click(object sender, EventArgs e)
         {
-            // Aktuelles Datum abrufen
-            string datum = DateTime.Now.ToString("yyyy-MM-dd");
-
             // Für jede Datei in der ListBox...
             foreach (string file in listBox_Dateiliste.Items)
             {
@@ -58,12 +65,6 @@ namespace AddDate
                     MessageBox.Show(ex.Message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-            // Meldung über Erfolg anzeigen
-            //if (listBox_Dateiliste.Items.Count > 0)
-            //{
-            //    Erfolgsmeldung();
-            //}
 
             listBox_Dateiliste.Items.Clear();
         }
@@ -112,6 +113,35 @@ namespace AddDate
             listBox_Dateiliste.AllowDrop = true;
             listBox_Dateiliste.DragDrop += listBox_Dateiliste_DragDrop;
             listBox_Dateiliste.DragEnter += listBox_Dateiliste_DragEnter;
+        }
+
+        private void MonthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            // Zeige das ausgewählte Datum in einem Label an (optional)
+            datum = e.Start.ToString("yyyy-MM-dd");
+            label_Datum.Text = "Datum = " + datum;
+        }
+
+        private void button_LeerzeichenErsetzen_Click(object sender, EventArgs e)
+        {
+            // Für jede Datei in der ListBox...
+            foreach (string file in listBox_Dateiliste.Items)
+            {
+                // ... neuen Dateinamen erstellen und Leerzeichen mit Unterstrich ersetzen
+                string neuerName = Path.Combine(Path.GetDirectoryName(file), Path.GetFileName(file).Replace(" ", "_"));
+
+                // Datei umbenennen
+                try
+                {
+                    File.Move(file, neuerName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            listBox_Dateiliste.Items.Clear();
         }
     }
 }
