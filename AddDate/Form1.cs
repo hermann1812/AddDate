@@ -12,7 +12,7 @@ namespace AddDate
         public static readonly string caption = "AddDate - " + Assembly.GetEntryAssembly().GetName().Version;
 
         // Aktuelles Datum
-        public string datum = DateTime.Now.ToString("yyyy-MM-dd");
+        public string datum = DateTime.Now.ToString("yyyy_MM_dd");
 
         public Form1()
         {
@@ -25,7 +25,7 @@ namespace AddDate
             Text = caption;
 
             // Aktuelles Datum abrufen
-            datum = DateTime.Now.ToString("yyyy-MM-dd");
+            datum = DateTime.Now.ToString("yyyy_MM_dd");
             label_Datum.Text = "Datum = " + datum;
         }
 
@@ -118,7 +118,7 @@ namespace AddDate
         private void MonthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
         {
             // Zeige das ausgewählte Datum in einem Label an (optional)
-            datum = e.Start.ToString("yyyy-MM-dd");
+            datum = e.Start.ToString("yyyy_MM_dd");
             label_Datum.Text = "Datum = " + datum;
         }
 
