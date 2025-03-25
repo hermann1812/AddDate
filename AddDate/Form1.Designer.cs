@@ -36,6 +36,7 @@
             this.label_Datum = new System.Windows.Forms.Label();
             this.button_LeerzeichenErsetzen = new System.Windows.Forms.Button();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.button_Erstelldatum = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Dateien_auswählen
@@ -103,11 +104,22 @@
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 8;
             // 
+            // button_Erstelldatum
+            // 
+            this.button_Erstelldatum.Location = new System.Drawing.Point(354, 25);
+            this.button_Erstelldatum.Name = "button_Erstelldatum";
+            this.button_Erstelldatum.Size = new System.Drawing.Size(75, 47);
+            this.button_Erstelldatum.TabIndex = 9;
+            this.button_Erstelldatum.Text = "Erstelldatum\r\nhinzufügen";
+            this.button_Erstelldatum.UseVisualStyleBackColor = true;
+            this.button_Erstelldatum.Click += new System.EventHandler(this.button_Erstelldatum_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 459);
+            this.Controls.Add(this.button_Erstelldatum);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.button_LeerzeichenErsetzen);
             this.Controls.Add(this.label_Datum);
@@ -137,6 +149,7 @@
         private System.Windows.Forms.Label label_Datum;
         private System.Windows.Forms.Button button_LeerzeichenErsetzen;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Button button_Erstelldatum;
     }
 }
 

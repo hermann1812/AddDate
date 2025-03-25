@@ -143,5 +143,30 @@ namespace AddDate
 
             listBox_Dateiliste.Items.Clear();
         }
+
+        private void button_Erstelldatum_Click(object sender, EventArgs e)
+        {
+            // Für jede Datei in der ListBox...
+            foreach (string file in listBox_Dateiliste.Items)
+            {
+                datum = File.GetCreationTime(file).ToString("yyyy_MM_dd");
+
+                // ... neuen Dateinamen mit Datum erstellen und Leerzeichen mit Unterstrich ersetzen
+                string neuerName = Path.Combine(Path.GetDirectoryName(file),
+                    datum + "_" + Path.GetFileName(file).Replace(" ", "_"));
+
+                // Datei umbenennen
+                try
+                {
+                    File.Move(file, neuerName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            listBox_Dateiliste.Items.Clear();
+        }
     }
 }
