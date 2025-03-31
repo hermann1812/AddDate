@@ -106,11 +106,11 @@
             // 
             // button_Erstelldatum
             // 
-            this.button_Erstelldatum.Location = new System.Drawing.Point(354, 25);
+            this.button_Erstelldatum.Location = new System.Drawing.Point(345, 25);
             this.button_Erstelldatum.Name = "button_Erstelldatum";
-            this.button_Erstelldatum.Size = new System.Drawing.Size(75, 47);
+            this.button_Erstelldatum.Size = new System.Drawing.Size(95, 47);
             this.button_Erstelldatum.TabIndex = 9;
-            this.button_Erstelldatum.Text = "Erstelldatum\r\nhinzufügen";
+            this.button_Erstelldatum.Text = "Änderungsdatum\r\nhinzufügen";
             this.button_Erstelldatum.UseVisualStyleBackColor = true;
             this.button_Erstelldatum.Click += new System.EventHandler(this.button_Erstelldatum_Click);
             // 

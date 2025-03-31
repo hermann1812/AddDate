@@ -150,6 +150,7 @@ namespace AddDate
             foreach (string file in listBox_Dateiliste.Items)
             {
                 datum = File.GetCreationTime(file).ToString("yyyy_MM_dd");
+                datum = File.GetLastWriteTime(file).ToString("yyyy_MM_dd");
 
                 // ... neuen Dateinamen mit Datum erstellen und Leerzeichen mit Unterstrich ersetzen
                 string neuerName = Path.Combine(Path.GetDirectoryName(file),
