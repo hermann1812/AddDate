@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button_Dateien_auswählen = new System.Windows.Forms.Button();
             this.button_Datum_hinzufügen = new System.Windows.Forms.Button();
@@ -37,6 +38,7 @@
             this.button_LeerzeichenErsetzen = new System.Windows.Forms.Button();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.button_Erstelldatum = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // button_Dateien_auswählen
@@ -150,6 +152,7 @@
         private System.Windows.Forms.Button button_LeerzeichenErsetzen;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Button button_Erstelldatum;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

@@ -21,6 +21,9 @@ namespace AddDate
             // Initialisiere den MonthCalendar
             monthCalendar1.DateSelected += MonthCalendar1_DateSelected;
 
+            // Setze das aktuelle Datum im MonthCalendar
+            toolTip1.SetToolTip(monthCalendar1, "Klicke auf ein Datum, um es auszuwählen.");
+
             // Caption for form
             Text = caption;
 
@@ -39,7 +42,11 @@ namespace AddDate
                     // Dateinamen in die ListBox einfügen
                     foreach (string file in dlg.FileNames)
                     {
-                        listBox_Dateiliste.Items.Add(file);
+                        // Nur hinzufügen, wenn es sich um eine Datei handelt und sie noch nicht in der Liste ist
+                        if (File.Exists(file) && !listBox_Dateiliste.Items.Contains(file))
+                        {
+                            listBox_Dateiliste.Items.Add(file);
+                        }
                     }
                 }
             }
@@ -108,6 +115,7 @@ namespace AddDate
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (string file in files)
             {
+                // Nur hinzufügen, wenn es sich um eine Datei handelt und sie noch nicht in der Liste ist
                 if (File.Exists(file) && !listBox_Dateiliste.Items.Contains(file))
                 {
                     listBox_Dateiliste.Items.Add(file);
@@ -122,9 +130,20 @@ namespace AddDate
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Drag & Drop aktivieren
             listBox_Dateiliste.AllowDrop = true;
             listBox_Dateiliste.DragDrop += listBox_Dateiliste_DragDrop;
             listBox_Dateiliste.DragEnter += listBox_Dateiliste_DragEnter;
+
+            // Tooltips zuweisen (Voraussetzung: ToolTip-Komponente mit Namen "toolTip1" vorhanden)
+            toolTip1.SetToolTip(monthCalendar1, "Klicke auf ein Datum im Kalender, um es für die Umbenennung zu verwenden.");
+            toolTip1.SetToolTip(listBox_Dateiliste, "Hier siehst du die ausgewählten Dateien.\nDu kannst Dateien auch per Drag & Drop hinzufügen.");
+            toolTip1.SetToolTip(button_Dateien_auswählen, "Klicke hier, um Dateien zur Liste hinzuzufügen.");
+            toolTip1.SetToolTip(button_Aus_ListBox_entfernen, "Entfernt die markierten Dateien aus der Liste.");
+            toolTip1.SetToolTip(button_Datum_hinzufügen, "Fügt das gewählte Datum dem Dateinamen voran (z. B. 2025_07_14_Datei.txt).");
+            toolTip1.SetToolTip(button_LeerzeichenErsetzen, "Ersetzt Leerzeichen in den Dateinamen durch Unterstriche.");
+            toolTip1.SetToolTip(button_Erstelldatum, "Verwendet das Änderungsdatum der Datei zur Umbenennung.");
+            toolTip1.SetToolTip(label_Datum, "Aktuell gewähltes Datum für die Umbenennung.");
         }
 
         private void MonthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
