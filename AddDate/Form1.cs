@@ -130,6 +130,9 @@ namespace AddDate
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Setze das aktuelle Datum im Label
+            label_Datum.Text = "Datum = " + datum;
+
             // Drag & Drop aktivieren
             listBox_Dateiliste.AllowDrop = true;
             listBox_Dateiliste.DragDrop += listBox_Dateiliste_DragDrop;
