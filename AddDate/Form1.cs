@@ -26,9 +26,6 @@ namespace AddDate
 
             // Caption for form
             Text = caption;
-
-            // Aktuelles Datum abrufen
-            label_Datum.Text = "Datum = " + datum;
         }
 
         private void button_Dateien_auswählen_Click(object sender, EventArgs e)
@@ -66,10 +63,10 @@ namespace AddDate
                 // Überprüfen, ob die Datei bereits existiert
                 if (File.Exists(neuerName))
                 {
-                    MessageBox.Show($"Die Datei existiert bereits:\n{neuerName}", caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Datei existiert bereits: " + neuerName, caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     continue;
                 }
-                
+
                 // Datei umbenennen
                 try
                 {
@@ -164,6 +161,13 @@ namespace AddDate
                 // ... neuen Dateinamen erstellen und Leerzeichen mit Unterstrich ersetzen
                 string neuerName = Path.Combine(Path.GetDirectoryName(file), Path.GetFileName(file).Replace(" ", "_"));
 
+                // Überprüfen, ob die Datei bereits existiert
+                if (File.Exists(neuerName))
+                {
+                    MessageBox.Show("Datei existiert bereits: " + neuerName, caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    continue;
+                }
+
                 // Datei umbenennen
                 try
                 {
@@ -190,20 +194,12 @@ namespace AddDate
                 datum = File.GetLastWriteTime(file).ToString("yyyy_MM_dd");
 
                 // ... neuen Dateinamen mit Datum erstellen und Leerzeichen mit Unterstrich ersetzen
-<<<<<<< HEAD
                 string neuerName = Path.Combine(Path.GetDirectoryName(file), datum + "_" + Path.GetFileName(file).Replace(" ", "_"));
-=======
-                string neuerName = Path.Combine(Path.GetDirectoryName(file),datum + "_" + Path.GetFileName(file).Replace(" ", "_"));
->>>>>>> 488b64b818bc17800cf8e2c4a6741be10cb97d5c
 
                 // Überprüfen, ob die Datei bereits existiert
                 if (File.Exists(neuerName))
                 {
-<<<<<<< HEAD
                     MessageBox.Show("Datei existiert bereits: " + neuerName, caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-=======
-                    MessageBox.Show($"Die Datei existiert bereits:\n{neuerName}", caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
->>>>>>> 488b64b818bc17800cf8e2c4a6741be10cb97d5c
                     continue;
                 }
 
