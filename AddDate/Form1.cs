@@ -26,6 +26,9 @@ namespace AddDate
 
             // Caption for form
             Text = caption;
+
+            // Setze das aktuelle Datum im Label
+            label_Datum.Text = "Datum = " + datum;
         }
 
         private void button_Dateien_auswählen_Click(object sender, EventArgs e)
@@ -54,9 +57,6 @@ namespace AddDate
             // Für jede Datei in der ListBox...
             foreach (string file in listBox_Dateiliste.Items)
             {
-                // ... aktuelles Datum abrufen
-                datum = datum = DateTime.Now.ToString("yyyy_MM_dd");
-
                 // ... neuen Dateinamen mit Datum erstellen und Leerzeichen mit Unterstrich ersetzen
                 string neuerName = Path.Combine(Path.GetDirectoryName(file), datum + "_" + Path.GetFileName(file).Replace(" ", "_"));
 
@@ -130,9 +130,6 @@ namespace AddDate
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Setze das aktuelle Datum im Label
-            label_Datum.Text = "Datum = " + datum;
-
             // Drag & Drop aktivieren
             listBox_Dateiliste.AllowDrop = true;
             listBox_Dateiliste.DragDrop += listBox_Dateiliste_DragDrop;
