@@ -25,7 +25,6 @@ namespace AddDate
             Text = caption;
 
             // Aktuelles Datum abrufen
-            datum = DateTime.Now.ToString("yyyy_MM_dd");
             label_Datum.Text = "Datum = " + datum;
         }
 
@@ -52,8 +51,14 @@ namespace AddDate
             foreach (string file in listBox_Dateiliste.Items)
             {
                 // ... neuen Dateinamen mit Datum erstellen und Leerzeichen mit Unterstrich ersetzen
-                string neuerName = Path.Combine(Path.GetDirectoryName(file),
-                    datum + "_" + Path.GetFileName(file).Replace(" ","_"));
+                string neuerName = Path.Combine(Path.GetDirectoryName(file), datum + "_" + Path.GetFileName(file).Replace(" ", "_"));
+
+                // Überprüfen, ob die Datei bereits existiert
+                if (File.Exists(neuerName))
+                {
+                    MessageBox.Show("Datei existiert bereits: " + neuerName, caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    continue;
+                }
 
                 // Datei umbenennen
                 try
@@ -66,6 +71,10 @@ namespace AddDate
                 }
             }
 
+            // Datum aktualisieren und anzeigen
+            label_Datum.Text = "Datum = " + datum;
+
+            // ListBox leeren
             listBox_Dateiliste.Items.Clear();
         }
 
@@ -99,7 +108,10 @@ namespace AddDate
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (string file in files)
             {
-                listBox_Dateiliste.Items.Add(file);
+                if (File.Exists(file) && !listBox_Dateiliste.Items.Contains(file))
+                {
+                    listBox_Dateiliste.Items.Add(file);
+                }
             }
         }
 
@@ -130,6 +142,13 @@ namespace AddDate
                 // ... neuen Dateinamen erstellen und Leerzeichen mit Unterstrich ersetzen
                 string neuerName = Path.Combine(Path.GetDirectoryName(file), Path.GetFileName(file).Replace(" ", "_"));
 
+                // Überprüfen, ob die Datei bereits existiert
+                if (File.Exists(neuerName))
+                {
+                    MessageBox.Show("Datei existiert bereits: " + neuerName, caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    continue;
+                }
+
                 // Datei umbenennen
                 try
                 {
@@ -141,6 +160,10 @@ namespace AddDate
                 }
             }
 
+            // Datum aktualisieren und anzeigen
+            label_Datum.Text = "Datum = " + datum;
+
+            // ListBox leeren
             listBox_Dateiliste.Items.Clear();
         }
 
@@ -149,12 +172,17 @@ namespace AddDate
             // Für jede Datei in der ListBox...
             foreach (string file in listBox_Dateiliste.Items)
             {
-                datum = File.GetCreationTime(file).ToString("yyyy_MM_dd");
                 datum = File.GetLastWriteTime(file).ToString("yyyy_MM_dd");
 
                 // ... neuen Dateinamen mit Datum erstellen und Leerzeichen mit Unterstrich ersetzen
-                string neuerName = Path.Combine(Path.GetDirectoryName(file),
-                    datum + "_" + Path.GetFileName(file).Replace(" ", "_"));
+                string neuerName = Path.Combine(Path.GetDirectoryName(file), datum + "_" + Path.GetFileName(file).Replace(" ", "_"));
+
+                // Überprüfen, ob die Datei bereits existiert
+                if (File.Exists(neuerName))
+                {
+                    MessageBox.Show("Datei existiert bereits: " + neuerName, caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    continue;
+                }
 
                 // Datei umbenennen
                 try
@@ -167,6 +195,10 @@ namespace AddDate
                 }
             }
 
+            // Datum aktualisieren und anzeigen
+            label_Datum.Text = "Datum = " + datum;
+
+            // ListBox leeren
             listBox_Dateiliste.Items.Clear();
         }
     }
